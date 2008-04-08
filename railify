@@ -8,7 +8,7 @@
 # See http://github.com/foca/utility_scripts/ for the latest version
 # Released under a WTFP license (http://sam.zoy.org/wtfpl/)
 
-RAILS_SVN_CHECKOUT = '/Users/foca/Rails/_rails'
+RAILS_SVN_CHECKOUT = '/Users/cptfinch/developments/rails/apps/experimental'
 
 module Helpers
   LINE = 80
@@ -25,7 +25,7 @@ module Helpers
   end
 
   def templates
-    { :gitignore => %w[config/database.yml tmp/* log/*.log db/*.sqlite3 db/schema.rb public/stylesheets/application.css] * "\n",
+    { :gitignore => %w[config/database.yml tmp/* log/*.log db/*.sqlite3 public/stylesheets/application.css] * "\n",
       :routes    => ["ActionController::Routing::Routes.draw do |map|", "end"] * "\n" }
   end
 
