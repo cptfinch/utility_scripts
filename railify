@@ -8,7 +8,7 @@
 # See http://github.com/foca/utility_scripts/ for the latest version
 # Released under a WTFP license (http://sam.zoy.org/wtfpl/)
 
-RAILS_SVN_CHECKOUT = '/Users/cptfinch/developments/rails/apps/experimental'
+RAILS_GIT_CHECKOUT = '/Users/cptfinch/developments/rails/apps/rails_git_checkout/rails'
 
 module Helpers
   LINE = 80
@@ -50,12 +50,12 @@ if __FILE__ == $0
 
   app_name  = ARGV.first
 
-  announcing "Fetching EDGE rails" do
-    Dir.chdir(RAILS_SVN_CHECKOUT) { silent "svn update" }
+  announcing "Updating EDGE rails (git pull)" do
+    Dir.chdir(RAILS_GIT_CHECKOUT) { silent "git pull" }
   end
 
   announcing "Creating application layout" do
-    silent "ruby #{RAILS_SVN_CHECKOUT}/railties/bin/rails #{app_name}"
+    silent "ruby #{RAILS_GIT_CHECKOUT}/railties/bin/rails #{app_name}"
   end
 
   Dir.chdir(app_name) do
