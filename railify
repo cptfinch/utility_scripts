@@ -66,7 +66,7 @@ if __FILE__ == $0
       silent "rm public/images/rails.png"
       silent "cp config/database.{,sample.}yml"
       silent "rm -r test"
-      File.open("config/routes.rb", "w") {|f| f << templates[:routes] }
+      # File.open("config/routes.rb", "w") {|f| f << templates[:routes] }
     end
 
     announcing "Creating databases" do
@@ -82,7 +82,8 @@ if __FILE__ == $0
     end
 
     announcing "Freezing rails" do
-      braid "http://dev.rubyonrails.org/svn/rails/trunk", "vendor/rails"
+      # braid "http://dev.rubyonrails.org/svn/rails/trunk", "vendor/rails"
+      rake "rails:freeze:edge"
     end
 
     announcing "Installing GemsOnrails" do
@@ -97,8 +98,11 @@ if __FILE__ == $0
     end
 
     announcing "Installing RSpec" do
-      braid "http://rspec.rubyforge.org/svn/trunk/rspec", "vendor/plugins/rspec"
-      braid "http://rspec.rubyforge.org/svn/trunk/rspec_on_rails", "vendor/plugins/rspec_on_rails"
+      silent "script/plugin install git://github.com/dchelimsky/rspec.git"
+      silent "script/plugin install git://github.com/dchelimsky/rspec-rails.git"
+      
+      # braid "http://rspec.rubyforge.org/svn/trunk/rspec", "vendor/plugins/rspec"
+      #       braid "http://rspec.rubyforge.org/svn/trunk/rspec_on_rails", "vendor/plugins/rspec_on_rails"
     end
 
     announcing "Generating RSpec base files" do
@@ -107,7 +111,8 @@ if __FILE__ == $0
     end
 
     announcing "Installing make_resourceful" do
-      braid "http://svn.hamptoncatlin.com/make_resourceful/trunk", "vendor/plugins/make_resourceful"
+      silent "script/plugin install git://github.com/jcfischer/make_resourceful.git"
+      git "Installed make_resourceful plugin"
     end
   end
 
