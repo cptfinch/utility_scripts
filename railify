@@ -21,7 +21,8 @@ module Helpers
   end
 
   def silent(command)
-    system "#{command} &> /dev/null"
+    # system "#{command} &> /dev/null"
+    system "#{command}"
   end
 
   def templates
@@ -83,7 +84,9 @@ if __FILE__ == $0
 
     announcing "Freezing rails" do
       # braid "http://dev.rubyonrails.org/svn/rails/trunk", "vendor/rails"
-      rake "rails:freeze:edge"
+      #rake "rails:freeze:edge"
+      silent "git submodule add git://github.com/rails/rails.git"
+      silent "git submodule init"
     end
 
     announcing "Installing GemsOnrails" do
@@ -98,9 +101,11 @@ if __FILE__ == $0
     end
 
     announcing "Installing RSpec" do
-      silent "script/plugin install git://github.com/dchelimsky/rspec.git"
-      silent "script/plugin install git://github.com/dchelimsky/rspec-rails.git"
-      
+      # silent "script/plugin install git://github.com/dchelimsky/rspec.git"
+      #    silent "script/plugin install git://github.com/dchelimsky/rspec-rails.git"
+      silent "git submodule add git://github.com/dchelimsky/rspec.git vendor/plugins/rspec"
+      silent "git submodule add git://github.com/dchelimsky/rspec-rails.git"
+      silent "git submodule init"
       # braid "http://rspec.rubyforge.org/svn/trunk/rspec", "vendor/plugins/rspec"
       #       braid "http://rspec.rubyforge.org/svn/trunk/rspec_on_rails", "vendor/plugins/rspec_on_rails"
     end
@@ -111,7 +116,8 @@ if __FILE__ == $0
     end
 
     announcing "Installing make_resourceful" do
-      silent "script/plugin install git://github.com/jcfischer/make_resourceful.git"
+      silent "git submodule add git://github.com/jcfischer/make_resourceful.git"
+      silent "git submodule init"
       git "Installed make_resourceful plugin"
     end
   end
