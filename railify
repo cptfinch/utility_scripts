@@ -34,7 +34,7 @@ module Helpers
     silent "git commit -m '#{message}'"
   end
 
-  def braid(repo, dir, type="svn")
+  def braid(repo, dir, type="git")
     silent "braid add #{repo} --type #{type} #{dir}"
     silent "git merge braid/track"
   end
@@ -82,7 +82,7 @@ if __FILE__ == $0
     end
 
     announcing "Freezing rails" do
-      # braid "http://dev.rubyonrails.org/svn/rails/trunk", "vendor/rails"
+      # braid "git://github.com/rails/rails.git", "vendor/rails"
       rake "rails:freeze:edge"
     end
 
@@ -100,9 +100,9 @@ if __FILE__ == $0
     announcing "Installing RSpec" do
       silent "script/plugin install git://github.com/dchelimsky/rspec.git"
       silent "script/plugin install git://github.com/dchelimsky/rspec-rails.git"
-      
-      # braid "http://rspec.rubyforge.org/svn/trunk/rspec", "vendor/plugins/rspec"
-      #       braid "http://rspec.rubyforge.org/svn/trunk/rspec_on_rails", "vendor/plugins/rspec_on_rails"
+             
+      # braid "git://github.com/dchelimsky/rspec.git", "vendor/plugins/rspec"
+      #       braid "git://github.com/dchelimsky/rspec-rails.git", "vendor/plugins/rspec_on_rails"
     end
 
     announcing "Generating RSpec base files" do
@@ -112,8 +112,38 @@ if __FILE__ == $0
 
     announcing "Installing make_resourceful" do
       silent "script/plugin install git://github.com/jcfischer/make_resourceful.git"
+      # braid "git://github.com/jcfischer/make_resourceful.git", "vendor/plugins/make_resourceful"
       git "Installed make_resourceful plugin"
     end
+    
+    # announcing "Installing sexy_scaffold" do
+    #   silent "script/plugin install git://github.com/dfischer/sexy_scaffold.git"
+    #   git "Installed sexy_scaffold plugin"
+    # end
+    # 
+    # announcing "Installing rspec_on_crack" do
+    #   silent "script/plugin install git://github.com/technoweenie/rspec_on_rails_on_crack.git"
+    #   git "Installed rspec_on_crack plugin"
+    # end
+    # 
+    # announcing "Installing acts_as_list" do
+    #   silent "script/plugin install git://github.com/veilleperso/acts_as_list.git"
+    #   git "Installed acts_as_list plugin"
+    # end
+    # 
+    # announcing "Installing acts_as_state_machine" do
+    #   braid "http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/trunk/", "vendor/plugins/acts_as_state_machine"
+    # end
+    # 
+    # announcing "Installing acts_as_state_machine" do
+    #   # braid "http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/trunk/", "vendor/plugins/acts_as_state_machine"
+    #   silent "script/plugin install git://github.com/technoweenie/restful-authentication.git"
+    # end
+    # 
+    # announcing "Installing auto_migrations" do
+    #   silent "script/plugin install git://github.com/pjhyett/auto_migrations.git"
+    # end
+    
   end
 
 end
