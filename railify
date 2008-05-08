@@ -85,7 +85,7 @@ if __FILE__ == $0
     announcing "Freezing rails" do
       # braid "git://github.com/rails/rails.git", "vendor/rails"
       #rake "rails:freeze:edge"
-      silent "git submodule add git://github.com/rails/rails.git"
+      silent "git submodule add git://github.com/rails/rails.git vendor/rails"
       silent "git submodule init"
     end
 
@@ -111,7 +111,7 @@ if __FILE__ == $0
       #       braid "http://rspec.rubyforge.org/svn/trunk/rspec_on_rails", "vendor/plugins/rspec_on_rails"
 
       silent "git submodule add git://github.com/dchelimsky/rspec.git vendor/plugins/rspec"
-      silent "git submodule add git://github.com/dchelimsky/rspec-rails.git"
+      silent "git submodule add git://github.com/dchelimsky/rspec-rails.git vendor/plugins/rspec-rails"
       silent "git submodule init"
     end
 
@@ -121,45 +121,45 @@ if __FILE__ == $0
     end
 
     announcing "Installing make_resourceful" do
-      silent "git submodule add git://github.com/jcfischer/make_resourceful.git"
+      silent "git submodule add git://github.com/jcfischer/make_resourceful.git vendor/plugins/make_resourceful"
       silent "git submodule init"
       git "Installed make_resourceful plugin"
     end
     
     announcing "Installing sexy_scaffold" do
-      silent "git submodule add git://github.com/dfischer/sexy_scaffold.git"
+      silent "git submodule add git://github.com/dfischer/sexy_scaffold.git vendor/plugins/sexy_scaffold"
       silent "git submodule init"
       git "Installed sexy_scaffold plugin"
      end
     
     announcing "Installing rspec_on_crack" do
       # silent "script/plugin install git://github.com/technoweenie/rspec_on_rails_on_crack.git"
-      silent "git submodule add git://github.com/technoweenie/rspec_on_rails_on_crack.git"
+      silent "git submodule add git://github.com/technoweenie/rspec_on_rails_on_crack.git vendor/plugins/rspec_on_rails_on_crack"
       silent "git submodule init"
       git "Installed rspec_on_crack plugin"
     end
     
     announcing "Installing acts_as_list" do
       # silent "script/plugin install git://github.com/veilleperso/acts_as_list.git"
-      silent "git submodule add git://github.com/veilleperso/acts_as_list.git"
+      silent "git submodule add git://github.com/veilleperso/acts_as_list.git vendor/plugins/acts_as_list"
       silent "git submodule init"
       git "Installed acts_as_list plugin"
     end
     
     announcing "Installing acts_as_state_machine" do
-      silent "git submodule add git://github.com/omghax/acts_as_state_machine.git"
+      silent "git submodule add git://github.com/omghax/acts_as_state_machine.git vendor/plugins/acts_as_state_machine"
       silent "git submodule init"
       git "Installed acts_as_state_machine plugin"
     end
     
     announcing "Installing restful-authentication" do
-      silent "git submodule add git://github.com/technoweenie/restful-authentication.git"
+      silent "git submodule add git://github.com/technoweenie/restful-authentication.git vendor/plugins/restful-authentication"
       silent "git submodule init"
       git "Installed restful-authentication plugin"
     end
     
     announcing "Installing auto_migrations" do
-      silent "git submodule add git://github.com/pjhyett/auto_migrations.git"
+      silent "git submodule add git://github.com/pjhyett/auto_migrations.git vendor/plugins/auto_migrations"
       silent "git submodule init"
       git "Installed auto_migrations plugin"
     end 
